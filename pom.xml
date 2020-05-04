@@ -3,12 +3,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <packaging>war</packaging>
 
   <groupId>org.example</groupId>
-  <artifactId>it-cluster-webserver-with-jetty</artifactId>
+  <artifactId>kukuruza-servlet</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>it-cluster-webserver-with-jetty</name>
+  <name>kukuruza-servlet</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,7 +35,7 @@
           <artifactId>jetty-maven-plugin</artifactId>
           <version>${jettyVersion}</version>
           <configuration>
-            <supportedPackagings>jar</supportedPackagings>
+            <supportedPackagings>war</supportedPackagings>
           </configuration>
         </plugin>
         <plugin>
@@ -46,8 +47,20 @@
           <version>2.22.1</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        <plugin>
+          <groupId>com.heroku.sdk</groupId>
+          <artifactId>heroku-maven-plugin</artifactId>
           <version>3.0.2</version>
+          <configuration>
+              <jdkVersion>11</jdkVersion>
+              <appName>kukuruza-servlet</appName>
+            <!--<processTypes>
+              <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+            </processTypes>-->
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
