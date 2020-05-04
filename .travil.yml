@@ -1,6 +1,0 @@
-jdk:
-  - openjdk11
-script:
-  - mvn clean install
-  - mvn sonar:sonar
-  - mvn heroku:deploy-war
